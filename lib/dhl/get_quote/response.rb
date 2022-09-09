@@ -93,11 +93,12 @@ protected
   end
 
   def condition_indicates_error?
+    puts "@parsed_xml['DCTResponse']['GetQuoteResponse']: #{@parsed_xml['DCTResponse']['GetQuoteResponse']}"
     return false
-    #@parsed_xml["DCTResponse"]["GetQuoteResponse"] &&
-    #  @parsed_xml["DCTResponse"]["GetQuoteResponse"].keys.include?('Note') &&
-    #    @parsed_xml["DCTResponse"]["GetQuoteResponse"]["Note"].keys.include?('Condition') &&
-    #      @parsed_xml["DCTResponse"]["GetQuoteResponse"]["Note"]["Condition"].is_a?(Hash)
+    @parsed_xml["DCTResponse"]["GetQuoteResponse"] &&
+      @parsed_xml["DCTResponse"]["GetQuoteResponse"].keys.include?('Note') &&
+        @parsed_xml["DCTResponse"]["GetQuoteResponse"]["Note"].keys.include?('Condition') &&
+          @parsed_xml["DCTResponse"]["GetQuoteResponse"]["Note"]["Condition"].is_a?(Hash)
   end
 
   def condition_error_code
