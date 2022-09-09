@@ -93,7 +93,7 @@ protected
   end
 
   def condition_indicates_error?
-    puts "@parsed_xml['DCTResponse']['GetQuoteResponse']: #{@parsed_xml['DCTResponse']['GetQuoteResponse']}"
+    puts "@parsed_xml: #{@parsed_xml}"
     return false
     @parsed_xml["DCTResponse"]["GetQuoteResponse"] &&
       @parsed_xml["DCTResponse"]["GetQuoteResponse"].keys.include?('Note') &&
