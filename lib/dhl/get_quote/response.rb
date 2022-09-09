@@ -39,7 +39,7 @@ class Dhl::GetQuote::Response
 
     return if error?
 
-    qtd_shp = [ @parsed_xml["DCTResponse"]["GetQuoteResponse"]["BkgDetails"]["QtdShp"] ].flatten
+    qtd_shp = [ @parsed_xml["res:DCTResponse"]["GetQuoteResponse"]["BkgDetails"]["QtdShp"] ].flatten
     qtd_s_in_ad_cur = qtd_shp.detect{|q|q["TransInd"] == "Y"}["QtdSInAdCur"]
 
     pricing = if x = qtd_s_in_ad_cur.detect{|q|q["CurrencyRoleTypeCode"]==currency_role_type_code}
@@ -93,7 +93,6 @@ protected
   end
 
   def condition_indicates_error?
-    puts "@parsed_xml: #{@parsed_xml["res:DCTResponse"]}"
     @parsed_xml["res:DCTResponse"]["GetQuoteResponse"] &&
       @parsed_xml["res:DCTResponse"]["GetQuoteResponse"].keys.include?('Note') &&
         @parsed_xml["res:DCTResponse"]["GetQuoteResponse"]["Note"].keys.include?('Condition') &&
