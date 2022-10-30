@@ -149,7 +149,7 @@ class Dhl::GetQuote::Request
 
   def to_xml
     validate!
-    @to_xml = ERB.new(File.new(xml_template_path).read, nil,'%<>-').result(binding)
+    @to_xml = ERB.new(File.new(xml_template_path).read, nil,'%-').result(binding)
   end
 
   # ready times are only 8a-5p(17h)
